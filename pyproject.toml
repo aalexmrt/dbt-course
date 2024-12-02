@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "snowflake-dbt"
+version = "0.1.0"
+description = ""
+authors = ["Alex Martinez <alexmartinez.mm98@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.13"
+dbt-core = "^1.8.9"
+dbt-snowflake = "^1.8.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
