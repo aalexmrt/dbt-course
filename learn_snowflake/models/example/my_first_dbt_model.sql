@@ -7,16 +7,14 @@
     Try changing "table" to "view" below
 */
 
-{{ config(materialized='table', alias="first_model") }}
+{{ config(materialized='table', alias="first_model", tags=["nightly", "example"]) }}
 
 with source_data as (
-
-    select 1 as id
+    select 1 as id, 'VG' as state, '2020-02-01 00:01:00.000'::timestamp_ltz as updated_at
     union all
-    select null as id
+    select null as id, 'TX' as state, '2020-01-02 00:00:00.000'::timestamp_ltz as updated_at
     union all
-    select 3 as id
-
+    select 3 as id, 'VT' as state, '2020-01-03 00:00:00.000'::timestamp_ltz as updated_at
 )
 
 select *
