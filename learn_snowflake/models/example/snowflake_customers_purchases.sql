@@ -1,6 +1,16 @@
+with customers as (
+    select *
+    from {{ source('sample', 'customer') }}
+),
+orders as (
+    select *
+    from {{ source('sample', 'orders') }}
+)
+
+
 
 select c.c_custkey, c.c_name, c.c_nationkey, sum(o.o_totalprice) as total_order_price
-from snowflake_sample_data.tpch_sf1.customer c
-left join snowflake_sample_data.tpch_sf1.orders o
+from customers c
+left join orders o
 on c_custkey = o.o_custkey
-group by c.c_custkey, c.c_name, c.c_nationkey
+{{group_by(3)}}
